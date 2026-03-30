@@ -7,9 +7,10 @@ entity ZMARA {
        PSTAT : String(15);      // Maintenance Status
        MATKL : String(9);       // Material Group
 
-     //Cardinality: ZMARA (1) ────> ZMARC (N).
-       //So one material can be in many plants.
+     
        toZMARC : Association to many ZMARC on toZMARC.MATNR = $self.MATNR;
+       toZMARD : Association to many ZMARD on toZMARD.MATNR = $self.MATNR;
+       toZMAKTX : Association to many ZMAKTX on toZMAKTX.MATNR = $self.MATNR;
 }
 entity ZMARC{
 
@@ -21,4 +22,20 @@ entity ZMARC{
    
    toZMARA : Association to ZMARA on toZMARA.MATNR = MATNR;
 
+}
+entity ZMARD {
+    key MATNR : String(20);    // FK → ZMARA.MATNR
+    key WERKS : String(4);     // Plant Code
+    key LGORT : String(10);    // Storage Location (e.g. RM1, KRM1)
+
+        // FK back-reference to ZMARA
+        toZMARA : Association to ZMARA on toZMARA.MATNR = MATNR;
+}
+entity ZMAKTX {
+    key MATNR : String(20);    // FK → ZMARA.MATNR
+    key SPRAS : String(2);     // Language: EN=English
+        MAKTX : String(100);   // Material Description (human-readable name)
+
+        // FK back-reference to ZMARA
+        toZMARA : Association to ZMARA on toZMARA.MATNR = MATNR;
 }

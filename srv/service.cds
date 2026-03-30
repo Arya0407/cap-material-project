@@ -6,5 +6,7 @@ service MaterialService {
 
     entity ZMARA as projection on db.ZMARA;
     entity ZMARC as projection on db.ZMARC;
+    entity ZMARD as projection on db.ZMARD;
+    entity ZMAKTX as  projection on db.ZMAKTX;
 
-}
+ }
