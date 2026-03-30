@@ -2,7 +2,8 @@
   "name": "arya",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "^9"
+    "@sap/cds": "^9.8.4",
+    "sqlite": "^5.1.1"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2"
@@ -10,17 +11,15 @@
   "scripts": {
     "start": "cds-serve"
   },
-  "private": true, 
-
-  "cds":{
-    "requires":{
-      "db":{
-        "kind":"sqlite",
-        "credential":{
-          "database":"db.sqlite"
+  "private": true,
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db.sqlite"
         }
       }
     }
   }
-   
 }
